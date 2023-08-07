@@ -25,7 +25,7 @@ const TextEditor: React.FC<IProps> = (props) => {
               <PhotoIcon width={20} height={20} color="rgb(29, 155, 240)" />
             </button>
             <span className="flex-grow" />
-            <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 font-semibold">
+            <button className="bg-blue-500 text-white px-4 py-1 rounded-full hover:bg-blue-600 transition-colors duration-300 font-semibold">
               Post
             </button>
           </div>

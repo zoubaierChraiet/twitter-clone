@@ -2,6 +2,7 @@ import SideBar from "@/components/SideBar";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import SearchInput from "@/components/SearchInput";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,7 +29,9 @@ export default function RootLayout({
           </div>
 
           {/* Widgets */}
-          <div className="hidden md:flex">Feed</div>
+          <div className="hidden md:flex p-2">
+            <SearchInput />
+          </div>
         </div>
       </body>
     </html>
