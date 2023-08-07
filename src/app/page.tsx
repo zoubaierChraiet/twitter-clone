@@ -1,5 +1,9 @@
-import Image from "next/image";
+import Feed from "@/components/Feed";
 
 export default function Home() {
-  return <div>Twitter clone</div>;
+  return (
+    <div className="h-full">
+      <Feed />
+    </div>
+  );
 }
