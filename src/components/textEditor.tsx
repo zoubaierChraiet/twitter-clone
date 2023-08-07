@@ -15,7 +15,7 @@ const TextEditor: React.FC<IProps> = (props) => {
         <div className="w-full">
           <textarea
             placeholder="What is happening?"
-            className="outline-none w-full min-h-[100px] resize border-b border-gray-300"
+            className="outline-none w-full min-h-[100px] placeholder:text-xl text-slate-700 resize border-b border-gray-300"
           />
           <div className="flex gap-4">
             <button className="p-2 hover:bg-gray-200 rounded-full">
@@ -23,6 +23,10 @@ const TextEditor: React.FC<IProps> = (props) => {
             </button>
             <button className="p-2 hover:bg-gray-200 rounded-full">
               <PhotoIcon width={20} height={20} color="rgb(29, 155, 240)" />
+            </button>
+            <span className="flex-grow" />
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300 font-semibold">
+              Post
             </button>
           </div>
         </div>
