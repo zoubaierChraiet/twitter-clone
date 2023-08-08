@@ -12,7 +12,8 @@ import {
 } from "@heroicons/react/24/solid";
 import MenuItem from "./MenuItem";
 import { useSession } from "next-auth/react";
-import Profile from "./Shared/Profile";
+import ProfileMenu from "./Shared/ProfileMenu";
+import Link from "next/link";
 
 const SideBar: React.FC = () => {
   const { data, status } = useSession();
@@ -32,27 +33,32 @@ const SideBar: React.FC = () => {
         <ul className="mb-6">
           <MenuItem href="" Icon={HomeIcon} text="Home" />
           <MenuItem href="" Icon={MagnifyingGlassIcon} text="Explore" />
-          <MenuItem href="" Icon={BellAlertIcon} text="Notifications" />
-          <MenuItem href="" Icon={EnvelopeIcon} text="Messages" />
-          <MenuItem href="" Icon={UserCircleIcon} text="Profile" />
+          {status === "authenticated" ? (
+            <>
+              <MenuItem href="" Icon={BellAlertIcon} text="Notifications" />
+              <MenuItem href="" Icon={EnvelopeIcon} text="Messages" />
+              <MenuItem href="" Icon={UserCircleIcon} text="Profile" />
+            </>
+          ) : null}
         </ul>
         {/* Button */}
-        <button className="rounded-full bg-blue-500 text-white p-4">
-          <span className="hidden lg:block">Post</span>
-          <BoltIcon className="lg:hidden" width={20} height={20} />
-        </button>
+        {status === "authenticated" ? (
+          <button className="rounded-full bg-blue-500 text-white p-4">
+            <span className="hidden lg:block">Post</span>
+            <BoltIcon className="lg:hidden" width={20} height={20} />
+          </button>
+        ) : null}
+        {status === "unauthenticated" ? (
+          <Link
+            href="/auth/SignIn"
+            className="rounded-full bg-blue-500 text-white p-4"
+          >
+            <span className="hidden lg:block">Login</span>
+          </Link>
+        ) : null}
         {/* Mini profile */}
         <span className="flex-grow" />
-        {data && status === "authenticated" ? (
-          <Profile
-            firstName={data?.user?.name!}
-            imgLink={data?.user?.image!}
-            lastName=""
-            className="hidden mb-8 lg:block p-4 hover:bg-gray-300 transition-all duration-300 bg-opacity-50 rounded-full cursor-pointer"
-            userName={data?.user?.name!}
-            noFollow
-          />
-        ) : null}
+        {data && status === "authenticated" ? <ProfileMenu /> : null}
       </div>
     </div>
   );

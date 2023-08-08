@@ -6,12 +6,12 @@ export default function Home() {
   return (
     <div className="h-full">
       <div>
-        <div className="w-full h-full flex md:grid md:grid-cols-6 lg:grid-cols-4">
+        <div className="w-full h-full flex md:grid md:grid-cols-6 lg:grid-cols-3">
           {/* SideBar */}
           <SideBar />
 
           {/* Feed */}
-          <div className="flex-grow md:col-span-3 lg:col-span-2">
+          <div className="flex-grow md:col-span-3 lg:col-span-1">
             <Feed />
           </div>
 
