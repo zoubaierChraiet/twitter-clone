@@ -1,8 +1,7 @@
-import SideBar from "@/components/SideBar";
+import { AuthProvider } from "@/components/Providers/AuthProvider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Widgets from "@/components/Widgets";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,20 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <div className="w-full h-full flex md:grid md:grid-cols-6 lg:grid-cols-4">
-          {/* SideBar */}
-          <SideBar />
-
-          {/* Feed */}
-          <div className="flex-grow md:col-span-3 lg:col-span-2">
-            {children}
-          </div>
-
-          {/* Widgets */}
-          <div className="hidden md:flex p-2 pl-8">
-            <Widgets />
-          </div>
-        </div>
+        <AuthProvider>{children}</AuthProvider>
       </body>
     </html>
   );

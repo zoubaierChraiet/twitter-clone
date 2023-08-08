@@ -1,5 +1,5 @@
-import Image from "next/image";
 import React from "react";
+import Profile from "./Shared/Profile";
 
 const ToFollow: React.FC = async (props) => {
   const res = await fetch(
@@ -28,41 +28,6 @@ const ToFollow: React.FC = async (props) => {
           lastName={each?.name?.last}
         />
       ))}
-    </div>
-  );
-};
-
-interface IProfile {
-  imgLink: string;
-  userName: string;
-  firstName: string;
-  lastName: string;
-}
-
-const Profile: React.FC<IProfile> = ({
-  firstName,
-  imgLink,
-  lastName,
-  userName,
-}) => {
-  return (
-    <div className="flex items-center gap-2 justify-between mb-2">
-      <div className="flex gap-2 items-center">
-        <Image
-          src={imgLink}
-          alt="link"
-          width={50}
-          height={50}
-          className="object-cover rounded-full"
-        />
-        <div>
-          <h2 className="text-sm font-bold">{userName}</h2>
-          <h2 className="text-xs">{`${firstName} ${lastName}`}</h2>
-        </div>
-      </div>
-      <button className="p-2 bg-blue-500 hover:bg-blue-700 rounded-full text-white text-sm">
-        Follow
-      </button>
     </div>
   );
 };

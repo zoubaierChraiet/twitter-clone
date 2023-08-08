@@ -1,17 +1,33 @@
+"use client";
+
 import React from "react";
 import {
   FaceSmileIcon,
   PhotoIcon,
   UserCircleIcon,
 } from "@heroicons/react/24/solid";
+import { useSession } from "next-auth/react";
+import Image from "next/image";
 
 interface IProps {}
 
 const TextEditor: React.FC<IProps> = (props) => {
+  const { data, status } = useSession();
+
   return (
     <div className="px-4 py-2 border-b border-gray-300">
       <div className="flex gap-4 items-start">
-        <UserCircleIcon width={50} height={50} />
+        {data?.user?.image && status === "authenticated" ? (
+          <Image
+            src={data?.user?.image!}
+            alt="profile image"
+            width={50}
+            height={50}
+            className="rounded-full object-cover"
+          />
+        ) : (
+          <UserCircleIcon width={50} height={50} />
+        )}
         <div className="w-full">
           <textarea
             placeholder="What is happening?"
