@@ -1,9 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-interface IProps {}
-
-const ToFollow: React.FC<IProps> = async (props) => {
+const ToFollow: React.FC = async (props) => {
   const res = await fetch(
     "https://randomuser.me/api?results=10&inc=name,login,picture",
     {
@@ -30,7 +28,6 @@ const ToFollow: React.FC<IProps> = async (props) => {
           lastName={each?.name?.last}
         />
       ))}
-      <div></div>
     </div>
   );
 };
