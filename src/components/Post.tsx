@@ -9,12 +9,14 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import React from "react";
+import { formatDistanceToNow } from "date-fns";
 
 interface IProps {
   postText: string;
   userImage: string;
   imageLink: string;
   userName: string;
+  date: Date;
 }
 
 const Post: React.FC<IProps> = ({
@@ -22,6 +24,7 @@ const Post: React.FC<IProps> = ({
   userImage,
   userName,
   postText,
+  date,
 }) => {
   return (
     <div className="py-2 px-4 border-b border-b-gray-300 border-opacity-70 flex gap-2">
@@ -40,7 +43,9 @@ const Post: React.FC<IProps> = ({
         <div className="flex w-full justify-between items-center">
           <div className="flex gap-2 items-center">
             <h2 className="font-bold">{userName}</h2>
-            <h2 className="text-gray-400 text-sm">@{userName} . Aug 6</h2>
+            <h2 className="text-gray-400 text-sm">
+              @{userName} . {formatDistanceToNow(date)}
+            </h2>
           </div>
           <Bars3Icon width={30} height={30} />
         </div>

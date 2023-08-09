@@ -23,6 +23,7 @@ const Feed: React.FC = () => {
       {posts.map((post, i) => (
         <Post
           key={i}
+          date={post?.data()?.timestamp?.toDate()}
           postText={post.data()?.text}
           imageLink={post.data()?.imageLink}
           userImage={post.data()?.userImg}
