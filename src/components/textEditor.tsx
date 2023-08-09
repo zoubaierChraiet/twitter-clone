@@ -6,7 +6,6 @@ import {
   PhotoIcon,
   UserCircleIcon,
   XCircleIcon,
-  XMarkIcon,
 } from "@heroicons/react/24/solid";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
@@ -29,6 +28,8 @@ const TextEditor: React.FC<IProps> = (props) => {
     img: "",
   }));
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  if (status === "unauthenticated") return null;
 
   const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setFormState((prev) => ({ ...prev, text: e.target.value }));

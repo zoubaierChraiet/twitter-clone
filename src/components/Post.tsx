@@ -1,31 +1,20 @@
-import {
-  UserCircleIcon,
-  Bars3Icon,
-  ChatBubbleOvalLeftIcon,
-  ArrowPathRoundedSquareIcon,
-  HeartIcon,
-  ChartBarIcon,
-  ArrowUpTrayIcon,
-} from "@heroicons/react/24/outline";
-import Image from "next/image";
 import React from "react";
+import { UserCircleIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
+import PostInteract from "./PostInteract";
 
-interface IProps {
+export interface IPostProps {
   postText: string;
   userImage: string;
   imageLink: string;
   userName: string;
   date: Date;
+  id: string;
 }
 
-const Post: React.FC<IProps> = ({
-  imageLink,
-  userImage,
-  userName,
-  postText,
-  date,
-}) => {
+const Post: React.FC<IPostProps> = (props) => {
+  const { imageLink, userImage, userName, postText, date, id } = props;
   return (
     <div className="py-2 px-4 border-b border-b-gray-300 border-opacity-70 flex gap-2">
       {userImage ? (
@@ -44,7 +33,7 @@ const Post: React.FC<IProps> = ({
           <div className="flex gap-2 items-center">
             <h2 className="font-bold">{userName}</h2>
             <h2 className="text-gray-400 text-sm">
-              @{userName} . {formatDistanceToNow(date)}
+              @{userName} . {date ? formatDistanceToNow(date) : null}
             </h2>
           </div>
           <Bars3Icon width={30} height={30} />
@@ -62,28 +51,7 @@ const Post: React.FC<IProps> = ({
             />
           ) : null}
         </div>
-        <div className="flex justify-between">
-          <button className="flex gap-2 items-center text-gray-400 hover:text-blue-400">
-            <ChatBubbleOvalLeftIcon width={18} height={18} />
-            96.2k
-          </button>
-          <button className="flex gap-2 items-center text-gray-400 hover:text-green-400">
-            <ArrowPathRoundedSquareIcon width={18} height={18} />
-            45.5k
-          </button>
-          <button className="flex gap-2 items-center text-gray-400 hover:text-pink-400">
-            <HeartIcon width={18} height={18} />
-            72k
-          </button>
-          <button className="flex gap-2 items-center text-gray-400 hover:text-blue-400">
-            <ChartBarIcon width={18} height={18} />
-            32k
-          </button>
-          <button className="flex gap-2 items-center text-gray-400 hover:text-blue-400">
-            <ArrowUpTrayIcon width={18} height={18} />
-            27.5k
-          </button>
-        </div>
+        <PostInteract {...props} />
       </div>
     </div>
   );

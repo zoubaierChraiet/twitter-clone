@@ -28,6 +28,7 @@ const Feed: React.FC = () => {
           imageLink={post.data()?.imageLink}
           userImage={post.data()?.userImg}
           userName={post?.data()?.username}
+          id={post.id}
         />
       ))}
     </div>
