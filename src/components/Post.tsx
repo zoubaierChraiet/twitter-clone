@@ -10,29 +10,52 @@ import {
 import Image from "next/image";
 import React from "react";
 
-interface IProps {}
+interface IProps {
+  postText: string;
+  userImage: string;
+  imageLink: string;
+  userName: string;
+}
 
-const Post: React.FC<IProps> = (props) => {
+const Post: React.FC<IProps> = ({
+  imageLink,
+  userImage,
+  userName,
+  postText,
+}) => {
   return (
     <div className="py-2 px-4 border-b border-b-gray-300 border-opacity-70 flex gap-2">
-      <UserCircleIcon width={50} height={50} />
+      {userImage ? (
+        <Image
+          src={userImage}
+          alt="aquarelle"
+          width={50}
+          height={50}
+          className="h-[50px] rounded-full"
+        />
+      ) : (
+        <UserCircleIcon width={50} height={50} />
+      )}
       <div className="flex flex-grow flex-col">
         <div className="flex w-full justify-between items-center">
           <div className="flex gap-2 items-center">
-            <h2 className="font-bold">elon zouba</h2>
-            <h2 className="text-gray-400 text-sm">@Zouba . Aug 6</h2>
+            <h2 className="font-bold">{userName}</h2>
+            <h2 className="text-gray-400 text-sm">@{userName} . Aug 6</h2>
           </div>
           <Bars3Icon width={30} height={30} />
         </div>
         <div className="mb-4 p-4">
-          <Image
-            src="/aquarelle.jpg"
-            alt="aquarelle"
-            objectFit="cover"
-            width={1000}
-            height={1000}
-            className="object-cover w-full h-[200px] rounded-md"
-          />
+          <p className="mb-4"> {postText} </p>
+          {imageLink ? (
+            <Image
+              src={imageLink}
+              alt="aquarelle"
+              objectFit="cover"
+              width={1000}
+              height={1000}
+              className="object-cover w-full h-[200px] rounded-md"
+            />
+          ) : null}
         </div>
         <div className="flex justify-between">
           <button className="flex gap-2 items-center text-gray-400 hover:text-blue-400">

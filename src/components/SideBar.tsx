@@ -53,12 +53,14 @@ const SideBar: React.FC = () => {
             href="/auth/SignIn"
             className="rounded-full bg-blue-500 text-white p-4"
           >
-            <span className="hidden lg:block">Login</span>
+            <span className="hidden lg:block text-center">Login</span>
+            <UserCircleIcon className="lg:hidden" width={20} height={20} />
           </Link>
         ) : null}
         {/* Mini profile */}
         <span className="flex-grow" />
         {data && status === "authenticated" ? <ProfileMenu /> : null}
+        <span className="mb-8" />
       </div>
     </div>
   );
