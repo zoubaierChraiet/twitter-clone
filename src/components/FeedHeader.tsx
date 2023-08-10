@@ -1,6 +1,6 @@
 import React from "react";
 import Tabs from "./Tabs";
-import TextEditor from "./textEditor";
+import TextEditor from "./TextEditor";
 interface IProps {}
 
 const FeedHeader: React.FC<IProps> = (props) => {

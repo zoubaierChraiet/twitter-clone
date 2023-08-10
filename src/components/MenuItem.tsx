@@ -9,10 +9,12 @@ interface IProps {
 
 const MenuItem: React.FC<IProps> = ({ Icon, text, href }) => {
   return (
-    <li>
+    <li data-testid="menu-item">
       <Link href={href} className="list-link">
-        <Icon width={30} height={30} />
-        <span className="hidden lg:block">{text}</span>
+        {Icon ? <Icon data-testid="icon" width={30} height={30} /> : null}
+        <span data-testid="menue-iem-text" className="hidden lg:block">
+          {text}
+        </span>
       </Link>
     </li>
   );

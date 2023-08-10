@@ -13,7 +13,6 @@ import {
   deleteDoc,
   doc,
   onSnapshot,
-  orderBy,
   query,
   setDoc,
 } from "firebase/firestore";

@@ -29,12 +29,17 @@ const Profile: React.FC<IProfile> = ({
           className="object-cover rounded-full"
         />
         <div>
-          <h2 className="text-sm font-bold">{userName}</h2>
+          <h2 className="text-sm font-bold" data-testid="username-heading">
+            {userName}
+          </h2>
           <h2 className="text-xs">{`${firstName} ${lastName}`}</h2>
         </div>
       </div>
       {!noFollow ? (
-        <button className="p-1 bg-blue-500 hover:bg-blue-700 rounded-full text-white text-xs">
+        <button
+          data-testid="follow-button"
+          className="p-1 bg-blue-500 hover:bg-blue-700 rounded-full text-white text-xs"
+        >
           Follow
         </button>
       ) : null}

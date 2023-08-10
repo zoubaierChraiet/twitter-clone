@@ -16,7 +16,7 @@ const Trends: React.FC<IProps> = (props) => {
   );
 };
 
-const Trend: React.FC<{ trend: string }> = ({ trend }) => {
+export const Trend: React.FC<{ trend: string }> = ({ trend }) => {
   return (
     <div className="mb-2">
       <div className="flex justify-between items-center">

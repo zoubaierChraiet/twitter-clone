@@ -1,8 +1,9 @@
 import React from "react";
-import { UserCircleIcon, Bars3Icon } from "@heroicons/react/24/outline";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import { formatDistanceToNow } from "date-fns";
 import PostInteract from "./PostInteract";
+import PostMenu from "./Shared/PostMenu";
 
 export interface IPostProps {
   postText: string;
@@ -11,10 +12,12 @@ export interface IPostProps {
   userName: string;
   date: Date;
   id: string;
+  postUserId: string;
 }
 
 const Post: React.FC<IPostProps> = (props) => {
-  const { imageLink, userImage, userName, postText, date, id } = props;
+  const { imageLink, userImage, userName, postText, date, id, postUserId } =
+    props;
   return (
     <div className="py-2 px-4 border-b border-b-gray-300 border-opacity-70 flex gap-2">
       {userImage ? (
@@ -36,7 +39,7 @@ const Post: React.FC<IPostProps> = (props) => {
               @{userName} . {date ? formatDistanceToNow(date) : null}
             </h2>
           </div>
-          <Bars3Icon width={30} height={30} />
+          <PostMenu postId={id} postUserId={postUserId} />
         </div>
         <div className="mb-4 p-4">
           <p className="mb-4"> {postText} </p>
